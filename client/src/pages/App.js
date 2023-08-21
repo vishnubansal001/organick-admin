@@ -1,8 +1,8 @@
-function App() {
+import Router from '../hoc/Router';
+
+const App = () => {
   return (
-    <div className="">
-      
-    </div>
+    <Router/>
   );
 }
 
