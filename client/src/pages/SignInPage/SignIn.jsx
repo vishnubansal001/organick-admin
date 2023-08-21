@@ -1,10 +1,11 @@
 import React from 'react'
+import InputBox from '../../containers/SignInPage/InputBox'
 
 const SignIn = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <InputBox/>
+    </>
   )
 }
 
