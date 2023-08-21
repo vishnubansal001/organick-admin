@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import { News } from "../../containers/AllNewsPage";
 
 const AllNews = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <News />
+    </>
+  );
+};
 
-export default AllNews
+export default AllNews;
