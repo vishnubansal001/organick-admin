@@ -5,64 +5,10 @@ import face from "../../assets/face.png";
 import twitter from "../../assets/twitter.png";
 import pint from "../../assets/pint.png";
 import { useNavigate } from "react-router-dom";
+import { contact, utility } from "../../database/data";
 
 const Footer = () => {
   const navigate = useNavigate();
-  const contact = [
-    {
-      id: 1,
-      heading: "Email",
-      txt: "needhelp@Organia.com",
-    },
-    {
-      id: 2,
-      heading: "Phone",
-      txt: "666 888 8888",
-    },
-    {
-      id: 3,
-      heading: "Address",
-      txt: "Chitkara University,Punjab,India",
-    },
-  ];
-
-  const utility = [
-    {
-      id: 1,
-      txt: "Home",
-      link: "/",
-    },
-    {
-      id: 2,
-      txt: "Sign In",
-      link: "/sign-in",
-    },
-    {
-      id: 3,
-      txt: "All News",
-      link: "/all-news",
-    },
-    {
-      id: 4,
-      txt: "Add News",
-      link: "/add-news",
-    },
-    {
-      id: 5,
-      txt: "All Products",
-      link: "/all-products",
-    },
-    {
-      id: 6,
-      txt: "Add Product",
-      link: "/add-product",
-    },
-    {
-      id: 7,
-      txt: "All Users",
-      link: "/all-users",
-    },
-  ];
   return (
     <>
       <footer className="flex flex-col p-3 select-none items-center justify-center relative bg-white gap-5">

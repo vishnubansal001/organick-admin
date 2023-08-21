@@ -4,44 +4,13 @@ import logo from "../../assets/logo.png";
 import { CgProfile } from "react-icons/cg";
 // import cart from "../../assets/cart.png";
 import { useNavigate } from "react-router-dom";
+import { navItems } from "../../database/data";
 
 const Navbar = () => {
   // const [item, setItem] = useState(0);
   const [popupState, setPopupState] = useState(false);
   const onTriggerPopup = () => setPopupState(!popupState);
   const navigate = useNavigate();
-  const navItems = [
-    {
-      id: 1,
-      txt: "Home",
-      link: "/",
-    },
-    {
-      id: 2,
-      txt: "All News",
-      link: "/all-news",
-    },
-    {
-      id: 3,
-      txt: "Add News",
-      link: "/add-news",
-    },
-    {
-      id: 4,
-      txt: "All Products",
-      link: "/all-products",
-    },
-    {
-      id: 5,
-      txt: "Add Product",
-      link: "/add-product",
-    },
-    {
-      id: 6,
-      txt: "All Users",
-      link: "/all-users",
-    },
-  ];
   return (
     <>
       <div className="lg:flex fixed w-full z-[1000] justify-center bg-[#FAFAFA] items-center py-4 hidden px-4">
