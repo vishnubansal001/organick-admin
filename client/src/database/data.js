@@ -4,6 +4,8 @@ import research from "../assets/research.png";
 import favourite from "../assets/favourite.png";
 import vitamin from "../assets/vitamin.png";
 import everyday from "../assets/everyday.png";
+import broccoli from "../assets/broccoli.png";
+import star from "../assets/star.png";
 
 export const contact = [
   {
@@ -160,5 +162,44 @@ export const discover = [
     heading: "Don't Use Plastic Product! it's Kill Nature",
     txt: "Simply dummy text of the printing and typesetting industry. Lorem Ipsum",
     // btn: "Read More",
+  },
+];
+
+export const products2 = [
+  {
+    id: 1,
+    btn: "Vegetable",
+    img: broccoli,
+    txt: "Calabrese Broccoli",
+    pCost: "$20.00",
+    cost: "$13.00",
+    img1: star,
+  },
+  {
+    id: 2,
+    btn: "Vegetable",
+    img: broccoli,
+    txt: "Calabrese Broccoli",
+    pCost: "$20.00",
+    cost: "$13.00",
+    img1: star,
+  },
+  {
+    id: 3,
+    btn: "Vegetable",
+    img: broccoli,
+    txt: "Calabrese Broccoli",
+    pCost: "$20.00",
+    cost: "$13.00",
+    img1: star,
+  },
+  {
+    id: 4,
+    btn: "Vegetable",
+    img: broccoli,
+    txt: "Calabrese Broccoli",
+    pCost: "$20.00",
+    cost: "$13.00",
+    img1: star,
   },
 ];
