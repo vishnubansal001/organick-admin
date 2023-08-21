@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 // import search from "../../assets/search.png";
 import { CgProfile } from "react-icons/cg";
-import cart from "../../assets/cart.png";
+// import cart from "../../assets/cart.png";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -18,35 +18,40 @@ const Navbar = () => {
     },
     {
       id: 2,
-      txt: "About",
-      link: "/about-us",
+      txt: "All News",
+      link: "/all-news",
     },
     {
       id: 3,
-      txt: "Shop",
-      link: "/shop",
+      txt: "Add News",
+      link: "/add-news",
     },
-    // {
-    //   id: 4,
-    //   txt: "Portfolio",
-    //   link: "/portfolio",
-    // },
     {
       id: 4,
-      txt: "News",
-      link: "/recent-news",
+      txt: "All Products",
+      link: "/all-products",
+    },
+    {
+      id: 5,
+      txt: "Add Product",
+      link: "/add-product",
+    },
+    {
+      id: 6,
+      txt: "All Users",
+      link: "/all-users",
     },
   ];
   return (
     <>
       <div className="lg:flex fixed w-full z-[1000] justify-center bg-[#FAFAFA] items-center py-4 hidden px-4">
         <div className="flex w-full px-4 justify-between gap-2 items-center">
-          <div className="flex justify-center items-center gap-24 pr-2">
+          <div className="flex justify-center items-center gap-16 pr-2">
             <div className="flex items-center justify-center">
               <img src={logo} alt="" />
             </div>
             <div className="flex items-center justify-center p-2 w-full">
-              <div className="flex justify-center items-center gap-16">
+              <div className="flex justify-center items-center gap-10">
                 {navItems?.map((item) => (
                   <div key={item.id}>
                     <div
@@ -124,16 +129,19 @@ const Navbar = () => {
                 <a onClick={() => navigate("/")}>Home</a>
               </li>
               <li>
-                <a onClick={() => navigate("/about-us")}>about</a>
+                <a onClick={() => navigate("/all-news")}>All News</a>
               </li>
               <li>
-                <a onClick={() => navigate("/shop")}>shop</a>
+                <a onClick={() => navigate("/add-news")}>Add News</a>
               </li>
-              {/* <li>
-                <a onClick={() => navigate("/portfolio")}>portfolio</a>
-              </li> */}
               <li>
-                <a onClick={() => navigate("/recent-news")}>news</a>
+                <a onClick={() => navigate("/all-products")}>All Products</a>
+              </li>
+              <li>
+                <a onClick={() => navigate("/add-product")}>Add Product</a>
+              </li>
+              <li>
+                <a onClick={() => navigate("/all-users")}>All Users</a>
               </li>
               {/* <div className="text-white font-bold text-lg">
                 <p>Cart {`(${item})`}</p>

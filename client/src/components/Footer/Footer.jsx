@@ -4,10 +4,10 @@ import insta from "../../assets/insta.png";
 import face from "../../assets/face.png";
 import twitter from "../../assets/twitter.png";
 import pint from "../../assets/pint.png";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const contact = [
     {
       id: 1,
@@ -26,43 +26,43 @@ const Footer = () => {
     },
   ];
 
-  // const utility = [
-  //   {
-  //     id: 1,
-  //     txt: "404 Not Found",
-  //     link: "/page-not-found",
-  //   },
-  //   {
-  //     id: 2,
-  //     txt: "Password Protected",
-  //     link: "/protected",
-  //   },
-  //   {
-  //     id: 3,
-  //     txt: "Licences",
-  //     link: "/licences",
-  //   },
-  //   {
-  //     id: 4,
-  //     txt: "Changelog",
-  //     link: "/changelog",
-  //   },
-  //   {
-  //     id: 5,
-  //     txt: "Contact",
-  //     link: "/contact-us",
-  //   },
-  //   {
-  //     id: 6,
-  //     txt: "Our Team",
-  //     link: "/our-team",
-  //   },
-  //   {
-  //     id: 7,
-  //     txt: "Services",
-  //     link: "/services",
-  //   },
-  // ];
+  const utility = [
+    {
+      id: 1,
+      txt: "Home",
+      link: "/",
+    },
+    {
+      id: 2,
+      txt: "Sign In",
+      link: "/sign-in",
+    },
+    {
+      id: 3,
+      txt: "All News",
+      link: "/all-news",
+    },
+    {
+      id: 4,
+      txt: "Add News",
+      link: "/add-news",
+    },
+    {
+      id: 5,
+      txt: "All Products",
+      link: "/all-products",
+    },
+    {
+      id: 6,
+      txt: "Add Product",
+      link: "/add-product",
+    },
+    {
+      id: 7,
+      txt: "All Users",
+      link: "/all-users",
+    },
+  ];
   return (
     <>
       <footer className="flex flex-col p-3 select-none items-center justify-center relative bg-white gap-5">
@@ -119,7 +119,7 @@ const Footer = () => {
                 />
               </div>
             </div>
-            {/* <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
               <h1 className="text-[#274C5B] text-center lg:text-2xl md:text-xl text-lg font-bold">
                 Utility Pages
               </h1>
@@ -138,7 +138,7 @@ const Footer = () => {
                   </div>
                 ))}
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="flex flex-col justify-center items-center text-center border-t-2 w-full p-3">
