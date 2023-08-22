@@ -56,7 +56,7 @@ const Navbar = () => {
       </div>
 
       <div className="relative">
-        <div className="lg:hidden flex fixed w-full z-[1000]">
+        <div className="lg:hidden flex fixed w-full z-[1000] bg-[#FAFAFA]">
           <div className="w-full px-[20px] py-[10px] z-[40]">
             <div className="flex justify-between items-center">
               <img src={logo} alt="img/logo.svg" />

@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import AddFrom from "../../containers/AddNewsPage/AddFrom";
 
 const AddNews = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <AddFrom />
+    </>
+  );
+};
 
-export default AddNews
+export default AddNews;
