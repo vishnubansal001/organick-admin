@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ProductSchema = mongoose.SchemaP({
+const ProductSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -10,23 +10,23 @@ const ProductSchema = mongoose.SchemaP({
     type: String,
     require: true,
   },
-  prevPrice: {
-    type: Number | String,
+  pCost: {
+    type: Number,
     required: true,
   },
-  currPrice: {
-    type: Number | String,
+  cCost: {
+    type: Number,
     required: true,
   },
   category: {
     type: String,
     required: true,
   },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
+  // userId: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "User",
+  //   required: true,
+  // },
 });
 
 module.exports = mongoose.model("Product", ProductSchema);

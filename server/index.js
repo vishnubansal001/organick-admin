@@ -8,6 +8,7 @@ const UserSchema = require("./models/User");
 const port = 8080;
 const mongoURL =
   "mongodb+srv://vb345651:vb345651@cluster0.0v13zai.mongodb.net/organick";
+const addProductRoute = require("./routes/addProduct");
 
 mongoose
   .connect(mongoURL)
@@ -39,6 +40,8 @@ app.use(cors());
 app.get("/", (req, res, next) => {
   res.send("<h1>hello</h1>");
 });
+
+app.use(addProductRoute);
 
 app.listen(port, () => {
   console.log(`server is listening on the ${port}`);
