@@ -45,10 +45,18 @@ const Navbar = () => {
                 <p>Cart {`(${item})`}</p>
               </div>
             </div> */}
-            <div className="flex justify-center items-center rounded-full bg-[#7EB693]">
-              <button>
-                {/* <img src={search} alt="" /> */}
+            <div className="flex justify-center items-center rounded-full">
+              {/* <button>
+                <img src={search} alt="" />
                 <CgProfile className="text-white h-auto w-12" />
+              </button>  */}
+              <button
+                onClick={() => {
+                  navigate("/sign-in");
+                }}
+                className="border-[3px] hover:border-[#274C5B] hover:text-[#274C5B] px-4 rounded-[10px] py-1 font-semibold text-xl border-white bg-[#274C5B] hover:bg-white text-white transition-all duration-300 cursor-pointer"
+              >
+                Login
               </button>
             </div>
           </div>
