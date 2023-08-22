@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import { UsersTable } from "../../containers/AllUsersPage";
 
 const AllUsers = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <UsersTable />
+    </>
+  );
+};
 
-export default AllUsers
+export default AllUsers;
