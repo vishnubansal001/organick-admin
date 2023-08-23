@@ -6,34 +6,32 @@ const http = require("http");
 const cors = require("cors");
 const UserSchema = require("./models/User");
 const port = 8000;
-require('dotenv').config();
+require("dotenv").config();
 const MONGO_URL = process.env.MONGO_URL;
+
+
 const addProductRoute = require("./routes/addProduct");
+const addNewsRoute = require("./routes/addNews");
+
 app.use(
   express.urlencoded({
     extended: true,
   })
 );
 
-// mongoose
-//   .connect(mongoURL)
-//   .then(() => {
-//     console.log("Connected to the server");
-
- 
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-async function mongoConnect(){
-  await mongoose.connect(MONGO_URL)
-}
-mongoConnect();
+mongoose
+  .connect(MONGO_URL)
+  .then(() => {
+    console.log("Connected to the server");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.use(express.json());
 app.use(cors());
 app.use("/admin/add-product", addProductRoute);
+app.use("/admin/add-news", addNewsRoute);
 app.get("/", (req, res, next) => {
   res.send("<h1>hello</h1>");
 });
