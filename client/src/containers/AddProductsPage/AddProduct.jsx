@@ -20,10 +20,6 @@ const AddProduct = () => {
   };
 
   const clicked = async (e) => {
-    console.log("running");
-    // const url = await uploadToCloudinary(file);
-    console.log("file uploaded");
-    // const formData = new FormData();
     console.log(file);
     const data1 = {
       img: file,
@@ -32,12 +28,6 @@ const AddProduct = () => {
       cCost: data.cCost,
       category: data.category,
     };
-    // formData.append("img", file);
-    // formData.append("title", data.title);
-    // formData.append("pCost", data.pCost);
-    // formData.append("cCost", data.cCost);
-    // formData.append("category", data.category);
-    // console.log(formData);
     axios
       .post("http://localhost:8000/admin/add-product", data1, {
         headers: {

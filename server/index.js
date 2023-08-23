@@ -6,8 +6,8 @@ const http = require("http");
 const cors = require("cors");
 const UserSchema = require("./models/User");
 const port = 8000;
-const mongoURL =
-  "mongodb+srv://vb345651:vb345651@cluster0.0v13zai.mongodb.net/organick";
+require('dotenv').config();
+const MONGO_URL = process.env.MONGO_URL;
 const addProductRoute = require("./routes/addProduct");
 app.use(
   express.urlencoded({
@@ -15,30 +15,21 @@ app.use(
   })
 );
 
-mongoose
-  .connect(mongoURL)
-  .then(() => {
-    console.log("Connected to the server");
+// mongoose
+//   .connect(mongoURL)
+//   .then(() => {
+//     console.log("Connected to the server");
 
-    // const newUser = new UserSchema({
-    //   name: "Test",
-    //   password: "test12344",
-    //   isAdmin: true,
-    //   isOwner: true,
-    // });
+ 
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
-    // newUser
-    //   .save()
-    //   .then(() => {
-    //     console.log("Dummy user created successfully");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+async function mongoConnect(){
+  await mongoose.connect(MONGO_URL)
+}
+mongoConnect();
 
 app.use(express.json());
 app.use(cors());
