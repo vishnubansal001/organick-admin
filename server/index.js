@@ -6,8 +6,14 @@ const http = require("http");
 const cors = require("cors");
 const UserSchema = require("./models/User");
 const port = 8000;
-const mongoURL = "mongodb+srv://vb345651:vb345651@cluster0.0v13zai.mongodb.net/organick";
+const mongoURL =
+  "mongodb+srv://vb345651:vb345651@cluster0.0v13zai.mongodb.net/organick";
 const addProductRoute = require("./routes/addProduct");
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 mongoose
   .connect(mongoURL)
@@ -36,7 +42,7 @@ mongoose
 
 app.use(express.json());
 app.use(cors());
-app.use("/admin/add-product",addProductRoute);
+app.use("/admin/add-product", addProductRoute);
 app.get("/", (req, res, next) => {
   res.send("<h1>hello</h1>");
 });
