@@ -5,9 +5,8 @@ const app = express();
 const http = require("http");
 const cors = require("cors");
 const UserSchema = require("./models/User");
-const port = 8080;
-const mongoURL =
-  "mongodb+srv://vb345651:vb345651@cluster0.0v13zai.mongodb.net/organick";
+const port = 8000;
+const mongoURL = "mongodb+srv://vb345651:vb345651@cluster0.0v13zai.mongodb.net/organick";
 const addProductRoute = require("./routes/addProduct");
 
 mongoose
@@ -37,11 +36,10 @@ mongoose
 
 app.use(express.json());
 app.use(cors());
+app.use("/admin/add-product",addProductRoute);
 app.get("/", (req, res, next) => {
   res.send("<h1>hello</h1>");
 });
-
-app.use(addProductRoute);
 
 app.listen(port, () => {
   console.log(`server is listening on the ${port}`);
