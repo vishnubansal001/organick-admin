@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { discover } from "../../database/data";
 import { useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
+import axios from "axios";
 
 const News = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const [news, setNews] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/admin/all-news")
+      .then((res) => {
+        // console.log(res?.data?.news);
+        setNews(res?.data?.news);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <section className="flex select-none items-center justify-center min-h-screen h-full relative bg-white py-[6rem]">
       <div className="flex items-center justify-center mx-auto p-6 sm:p-12 lg:p-16">
         <div className="flex flex-col items-center justify-center lg:gap-12 md:gap-10 gap-8 w-[90%] mx-auto">
           <div className="grid lg:grid-cols-2 grid-cols-1 justify-center items-center md:gap-7 gap-4">
-            {discover?.map((item) => (
+            {news?.map((item, index) => (
               <div
-                key={item.id}
+                key={index}
                 style={{ backgroundImage: `url(${item.img})` }}
-                className="bg-cover bg-center p-6 rounded-[20px] flex flex-col justify-between gap-10"
+                className="bg-cover min-w-[400px] bg-center p-6 rounded-[20px] flex flex-col justify-between gap-10"
               >
                 <div className="">
                   <div className="bg-white py-2 px-4 rounded-full inline-flex flex-col items-center justify-center">
@@ -31,15 +44,15 @@ const News = () => {
                     {/* <img src={} alt="" /> */}
                     <CgProfile />
                     <p className="text-[#274C5B] font-semibold lg:text-lg text-base">
-                      By {item.name}
+                      By kjehsgdvxbn
                     </p>
                   </div>
                   <div className="flex flex-col justify-center gap-2">
                     <h1 className="lg:text-xl md:text-lg text-base text-[#274C5B] font-bold ">
-                      {item.heading}
+                      {item.title}
                     </h1>
                     <p className="text-[#525C60] font-normal lg:text-base text-sm md:leading-3 leading-5">
-                      {item.txt}
+                      {item.about}
                     </p>
                   </div>
                   {/* <div>

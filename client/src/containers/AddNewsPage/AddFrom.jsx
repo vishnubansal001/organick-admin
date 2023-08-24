@@ -25,7 +25,7 @@ const AddFrom = () => {
       img: file,
       title: data.title,
       about: data.about,
-      date: data.date,
+      date: new Date(data.date),
     };
     axios
       .post("http://localhost:8000/admin/add-news", data1, {
