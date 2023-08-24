@@ -41,4 +41,22 @@ async function addProductPost(req, res) {
   }
 }
 
-module.exports = { addProductPost };
+async function allProducts(req, res) {
+  const products = await Product.find({});
+  const result = products.map((item) => ({
+    _id: item._id,
+    title: item.title,
+    pCost: item.pCost,
+    cCost: item.cCost,
+    category: item.category,
+    img: item.img,
+  }));
+  // console.log(result);
+  // return result;
+  if (result.length === 0) {
+    return res.json({ products: [] });
+  }
+  return res.json({ products: result });
+}
+
+module.exports = { addProductPost, allProducts };

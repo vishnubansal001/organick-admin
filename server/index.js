@@ -12,6 +12,7 @@ const MONGO_URL = process.env.MONGO_URL;
 const addProductRoute = require("./routes/addProduct");
 const addNewsRoute = require("./routes/addNews");
 const allNewsRoute = require("./routes/allNews");
+const allProductsRoute = require("./routes/allProducts");
 
 app.use(
   express.urlencoded({
@@ -33,6 +34,7 @@ app.use(cors());
 app.use("/admin/add-product", addProductRoute);
 app.use("/admin/add-news", addNewsRoute);
 app.use("/admin/all-news", allNewsRoute);
+app.use("/admin/all-products", allProductsRoute);
 app.get("/", (req, res, next) => {
   res.send("<h1>hello</h1>");
 });
