@@ -8,6 +8,11 @@ const UserSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
+  email:{
+    type:String,
+    required:true,
+    trim:true,
+  },
   password: {
     type: String,
     required: true,
@@ -21,18 +26,18 @@ const UserSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  cart: {
-    items: [
-      {
-        productId: {
-          type: Schema.Types.ObjectId,
-          ref: "Product",
-          required: true,
-        },
-        quantity: { type: Number, required: true },
-      },
-    ],
-  },
+  // cart: {
+  //   items: [
+  //     {
+  //       productId: {
+  //         type: Schema.Types.ObjectId,
+  //         ref: "Product",
+  //         required: true,
+  //       },
+  //       quantity: { type: Number, required: true },
+  //     },
+  //   ],
+  // },
 });
 
 module.exports = mongoose.model("User", UserSchema);

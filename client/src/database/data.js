@@ -203,3 +203,26 @@ export const products2 = [
     img1: star,
   },
 ];
+
+export const users = [
+  {
+    name: "hello",
+    email: "abc.122@gmail.com",
+    isAdmin: false,
+  },
+  {
+    name: "hello",
+    email: "abc.122@gmail.com",
+    isAdmin: true,
+  },
+  {
+    name: "hello",
+    email: "abc.122@gmail.com",
+    isAdmin: false,
+  },
+  {
+    name: "hello",
+    email: "abc.122@gmail.com",
+    isAdmin: true,
+  },
+];

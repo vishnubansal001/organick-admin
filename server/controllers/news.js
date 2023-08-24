@@ -56,7 +56,7 @@ async function allNews(req, res) {
     month: shortMonths[item.date.getMonth()],
     img: item.img,
   }));
-  console.log(result);
+  // console.log(result);
   // return result;
   if(result.length === 0){
     return res.json({news:[]});
