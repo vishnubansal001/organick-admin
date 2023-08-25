@@ -6,7 +6,7 @@ async function addProductPost(req, res) {
   try {
     const file = req.file;
     const { title, pCost, cCost, category } = req.body;
-    console.log(title);
+    // console.log(title);
     if (!file) {
       return res.status(400).json({ error: "No File Provided!!" });
     }
@@ -22,7 +22,7 @@ async function addProductPost(req, res) {
       category,
       img: fileUrl,
     });
-    console.log(newProduct);
+    // console.log(newProduct);
     await newProduct.save();
     return res.status(200).json({ message: "Product saved successfully" });
   } catch (error) {
@@ -55,21 +55,22 @@ async function productDeletePost(req, res) {
   if (!id) {
     return res.status(404).json({ error: "Id Didn't exists!!" });
   }
-  console.log(new mongoose.Types.ObjectId(id));
+  // console.log(new mongoose.Types.ObjectId(id));
   Product.deleteOne({ _id: new mongoose.Types.ObjectId(id) })
     .then(() => {
       console.log("DESTROYED PRODUCT");
-      res.redirect("/admin/all-products");
+      // res.redirect("/admin/all-products");
     })
     .catch((err) => {
       // const error = new Error(err);
       // error.httpStatusCode = 500;
       // return next(error);
-      return res.status(404).json({ error: "Server Error" });
+      // return res.status(404).json({ error: "Server Error" });
+      console.log(err);
     });
-  const products = await Product.find({});
+  // const products = await Product.find({});
   // console.log(products);
-  return res.json({message:'Product Deleted Successfully'})
+  return res.json({ message: "Product Deleted Successfully" });
 }
 
 module.exports = { addProductPost, allProducts, productDeletePost };

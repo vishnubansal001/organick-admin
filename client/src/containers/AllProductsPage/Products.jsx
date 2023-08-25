@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Products = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState();
+  const [isDisabled, setIsDisabled] = useState(false);
   useEffect(() => {
     axios
       .get("http://localhost:8000/admin/all-products")
@@ -19,14 +20,18 @@ const Products = () => {
   }, []);
 
   const deleteProductPost = (id) => {
+    setIsDisabled(true);
     axios
       .post(`http://localhost:8000/admin/delete-product/${id}`)
       .then(() => {
         console.log("product deleted!!");
-        navigate("/all-products");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsDisabled(false);
       });
   };
   return (
@@ -78,6 +83,7 @@ const Products = () => {
                       Edit
                     </button>
                     <button
+                      disabled={isDisabled}
                       onClick={() => {
                         deleteProductPost(item._id);
                       }}
