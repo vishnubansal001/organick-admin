@@ -22,8 +22,14 @@ const News = () => {
     <section className="flex select-none items-center justify-center min-h-screen h-full relative bg-white py-[6rem]">
       <div className="flex items-center justify-center mx-auto p-6 sm:p-12 lg:p-16">
         <div className="flex flex-col items-center justify-center lg:gap-12 md:gap-10 gap-8 w-[90%] mx-auto">
-          <div className="grid lg:grid-cols-2 grid-cols-1 justify-center items-center md:gap-7 gap-4">
-            {news?.length !== 0 ? (
+          <div
+            className={`${
+              news &&
+              news?.length !== 0 &&
+              "grid lg:grid-cols-2 grid-cols-1 justify-center items-center md:gap-7 gap-4"
+            }`}
+          >
+            {news && news?.length !== 0 ? (
               <div>
                 {news?.map((item, index) => (
                   <div
@@ -70,8 +76,8 @@ const News = () => {
                 ))}
               </div>
             ) : (
-              <div>
-                <h1 className="lg:text-4xl font-semibold md:text-3xl sm:text-2xl text-xl text-[#274C5B]">
+              <div className="w-full">
+                <h1 className="w-full lg:text-4xl font-semibold md:text-3xl sm:text-2xl text-xl text-[#274C5B]">
                   No News Added Yet
                 </h1>
               </div>

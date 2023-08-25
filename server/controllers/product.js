@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const cloudinary = require("../cloud/cloudinary");
 const Product = require("../models/Product");
 
@@ -48,4 +49,27 @@ async function allProducts(req, res) {
   return res.json({ products: result });
 }
 
-module.exports = { addProductPost, allProducts };
+async function productDeletePost(req, res) {
+  const id = req.params.productId;
+  // console.log(req.params);
+  if (!id) {
+    return res.status(404).json({ error: "Id Didn't exists!!" });
+  }
+  console.log(new mongoose.Types.ObjectId(id));
+  Product.deleteOne({ _id: new mongoose.Types.ObjectId(id) })
+    .then(() => {
+      console.log("DESTROYED PRODUCT");
+      res.redirect("/admin/all-products");
+    })
+    .catch((err) => {
+      // const error = new Error(err);
+      // error.httpStatusCode = 500;
+      // return next(error);
+      return res.status(404).json({ error: "Server Error" });
+    });
+  const products = await Product.find({});
+  // console.log(products);
+  return res.json({message:'Product Deleted Successfully'})
+}
+
+module.exports = { addProductPost, allProducts, productDeletePost };

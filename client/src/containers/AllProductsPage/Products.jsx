@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { products2 } from "../../database/data";
 import star from "../../assets/star.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState();
   useEffect(() => {
     axios
@@ -16,11 +17,29 @@ const Products = () => {
         console.log(err);
       });
   }, []);
+
+  const deleteProductPost = (id) => {
+    axios
+      .post(`http://localhost:8000/admin/delete-product/${id}`)
+      .then(() => {
+        console.log("product deleted!!");
+        navigate("/all-products");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <section className="flex select-none items-center justify-center min-h-screen py-[6rem] h-full relative bg-[#F9F8F8]">
       <div className="flex items-center justify-center mx-auto p-6 sm:p-12 lg:p-16">
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:gap-6 md:gap-4 gap-3">
-          {products?.length !== 0 ? (
+        <div
+          className={`${
+            products &&
+            products?.length !== 0 &&
+            "grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:gap-6 md:gap-4 gap-3"
+          }`}
+        >
+          {products && products?.length !== 0 ? (
             <div>
               {products?.map((item, index) => (
                 <div
@@ -58,7 +77,12 @@ const Products = () => {
                     <button className="border-[3px] border-[#274C5B] text-[#274C5B] px-4 rounded-[10px] py-1 font-semibold text-xl hover:border-white hover:bg-[#274C5B] hover:text-white transition-all duration-300 cursor-pointer">
                       Edit
                     </button>
-                    <button className="border-[3px] border-[#274C5B] text-[#274C5B] px-4 rounded-[10px] py-1 font-semibold text-xl hover:border-white hover:bg-[#274C5B] hover:text-white transition-all duration-300 cursor-pointer">
+                    <button
+                      onClick={() => {
+                        deleteProductPost(item._id);
+                      }}
+                      className="border-[3px] border-[#274C5B] text-[#274C5B] px-4 rounded-[10px] py-1 font-semibold text-xl hover:border-white hover:bg-[#274C5B] hover:text-white transition-all duration-300 cursor-pointer"
+                    >
                       Delete
                     </button>
                   </div>
