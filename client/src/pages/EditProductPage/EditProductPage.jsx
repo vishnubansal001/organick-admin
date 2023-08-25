@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import { Product } from "../../containers/EditProductPage";
 
 const EditProductPage = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <Product />
+    </>
+  );
+};
 
-export default EditProductPage
+export default EditProductPage;
