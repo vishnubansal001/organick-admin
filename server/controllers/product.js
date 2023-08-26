@@ -73,4 +73,92 @@ async function productDeletePost(req, res) {
   return res.json({ message: "Product Deleted Successfully" });
 }
 
-module.exports = { addProductPost, allProducts, productDeletePost };
+async function editProductPost(req, res) {
+  const file = req.file;
+  const { title, cCost, pCost, category } = req.body;
+  const id = req.params.productId;
+
+  // console.log(id);
+  // console.log(req.body);
+
+  if (!id) {
+    return res.status(404).json({ error: "Id Didn't exists!!" });
+  }
+  const product = await Product.findOneAndUpdate(
+    {
+      _id: id,
+    },
+    { title, cCost, pCost, category }
+  )
+    .then((product) => {
+      if (!product) {
+        return res.status(404).json({ error: "No Product Found" });
+      }
+      // console.log(product);
+      return product;
+    })
+    .catch((err) => {
+      // const error = new Error(err);
+      // error.httpStatusCode = 500;
+      // return next(error);
+      console.log(err);
+    });
+  // product.title = title ? title : product.title;
+  //   product.cCost = cCost ? cCost : product.cCost;
+  //   product.pCost = pCost ? pCost : product.pCost;
+  //   product.category = category ? category : product.category;
+
+  //  product={...product,title,cCost,pCost,category};
+
+  if (file) {
+    const cloudRes = cloudinary.uploader.upload(req.file.path, {
+      resource_type: "image",
+    });
+
+    const fileUrl = cloudRes.secure_url;
+
+    product.img = fileUrl;
+  }
+
+  await product.save();
+
+  return res.json({ message: "Product Edited Successfully" });
+}
+
+async function getEdit(req, res) {
+  const id = req.params.productId;
+  if (!id) {
+    return res.status(404).json({ error: "Id Didn't exists!!" });
+  }
+
+  Product.findById(id)
+    .then((product) => {
+      if (!product) {
+        return res.status(404).json({ error: "No Product Found" });
+      }
+      const result = {
+        _id: product._id,
+        title: product.title,
+        cCost: product.cCost,
+        pCost: product.pCost,
+        category: product.category,
+        img: product.img,
+      };
+      return res.json({ products: result });
+    })
+    .catch((err) => {
+      // const error = new Error(err);
+      // error.httpStatusCode = 500;
+      // return next(error);
+      console.log(err);
+    });
+  // return res.json({ message: "Product Got Successfully" });
+}
+
+module.exports = {
+  addProductPost,
+  allProducts,
+  productDeletePost,
+  editProductPost,
+  getEdit,
+};

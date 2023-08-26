@@ -37,15 +37,9 @@ const Products = () => {
   return (
     <section className="flex select-none items-center justify-center min-h-screen py-[6rem] h-full relative bg-[#F9F8F8]">
       <div className="flex items-center justify-center mx-auto p-6 sm:p-12 lg:p-16">
-        <div
-          className={`${
-            products &&
-            products?.length !== 0 &&
-            "grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:gap-6 md:gap-4 gap-3"
-          }`}
-        >
+        <div>
           {products && products?.length !== 0 ? (
-            <div>
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:gap-6 md:gap-4 gap-3">
               {products?.map((item, index) => (
                 <div
                   key={index}

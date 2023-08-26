@@ -15,6 +15,7 @@ const allNewsRoute = require("./routes/allNews");
 const allProductsRoute = require("./routes/allProducts");
 const allUsersRoute = require("./routes/allUsers");
 const deleteProductPost = require("./routes/deleteProduct");
+const editProductPost = require("./routes/editProduct");
 
 app.use(
   express.urlencoded({
@@ -39,6 +40,7 @@ app.use("/admin/all-news", allNewsRoute);
 app.use("/admin/all-products", allProductsRoute);
 app.use("/admin/all-users", allUsersRoute);
 app.use("/admin/delete-product", deleteProductPost);
+app.use("/admin/edit-product", editProductPost);
 
 app.get("/", (req, res, next) => {
   res.send("<h1>hello</h1>");
