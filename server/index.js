@@ -16,6 +16,10 @@ const allProductsRoute = require("./routes/allProducts");
 const allUsersRoute = require("./routes/allUsers");
 const deleteProductPost = require("./routes/deleteProduct");
 const editProductPost = require("./routes/editProduct");
+const landingPageDataRoute = require("./routes/landingData");
+const deleteNewsRoute = require("./routes/deleteNews");
+const editNewsRoute = require("./routes/editNews");
+const News = require("./models/News");
 
 app.use(
   express.urlencoded({
@@ -26,6 +30,14 @@ app.use(
 mongoose
   .connect(MONGO_URL)
   .then(() => {
+    // const news = new News({
+    //   title: "opiuysdgc",
+    //   about: "pwoeirudyfgh",
+    //   // date,
+    //   img: "https://res.cloudinary.com/dmtyzztj5/image/upload/v1692973310/fkgm9m6rmrvqzihlbrbf.png",
+    // });
+
+    // news.save();
     console.log("Connected to the server");
   })
   .catch((err) => {
@@ -35,12 +47,15 @@ mongoose
 app.use(express.json());
 app.use(cors());
 app.use("/admin/add-product", addProductRoute);
+app.use("/admin/data", landingPageDataRoute);
 app.use("/admin/add-news", addNewsRoute);
 app.use("/admin/all-news", allNewsRoute);
 app.use("/admin/all-products", allProductsRoute);
 app.use("/admin/all-users", allUsersRoute);
 app.use("/admin/delete-product", deleteProductPost);
 app.use("/admin/edit-product", editProductPost);
+app.use("/admin/delete-news", deleteNewsRoute);
+app.use("/admin/edit-news", editNewsRoute);
 
 app.get("/", (req, res, next) => {
   res.send("<h1>hello</h1>");
