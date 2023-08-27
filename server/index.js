@@ -19,6 +19,7 @@ const editProductPost = require("./routes/editProduct");
 const landingPageDataRoute = require("./routes/landingData");
 const deleteNewsRoute = require("./routes/deleteNews");
 const editNewsRoute = require("./routes/editNews");
+const addOrRemoveAdminRoute = require("./routes/addAndRemoveAdmin");
 const News = require("./models/News");
 
 app.use(
@@ -56,6 +57,7 @@ app.use("/admin/delete-product", deleteProductPost);
 app.use("/admin/edit-product", editProductPost);
 app.use("/admin/delete-news", deleteNewsRoute);
 app.use("/admin/edit-news", editNewsRoute);
+app.use("/admin/add-remove-admin", addOrRemoveAdminRoute);
 
 app.get("/", (req, res, next) => {
   res.send("<h1>hello</h1>");

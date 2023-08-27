@@ -128,7 +128,7 @@ async function editNewsPost(req, res) {
       if (!news) {
         return res.status(404).json({ error: "No news Found" });
       }
-      console.log(news);
+      // console.log(news);
       return news;
     })
     .catch((err) => {
@@ -144,7 +144,7 @@ async function editNewsPost(req, res) {
     news.img = fileUrl;
   }
 
-  console.log(news);
+  // console.log(news);
   await news.save();
 
   return res.json({ message: "News Edited Successfully" });
