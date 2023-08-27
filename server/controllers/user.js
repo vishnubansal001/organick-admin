@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const User = require("../models/User");
 
 async function allUsers(req, res) {
@@ -46,4 +47,21 @@ const addOrRemoveAdminPost = async (req, res) => {
   });
 };
 
-module.exports = { allUsers, addOrRemoveAdminPost };
+async function userDeletePost(req, res) {
+  const id = req.params.userId;
+  // console.log(req.params);
+  if (!id) {
+    return res.status(404).json({ error: "Id Didn't exists!!" });
+  }
+  // console.log(new mongoose.Types.ObjectId(id));
+  User.deleteOne({ _id: new mongoose.Types.ObjectId(id) })
+    .then(() => {
+      console.log("Removed User");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return res.json({ message: "User Removed Successfully" });
+}
+
+module.exports = { allUsers, addOrRemoveAdminPost ,userDeletePost};
