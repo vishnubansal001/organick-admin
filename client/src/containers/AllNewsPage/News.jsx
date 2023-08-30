@@ -62,6 +62,20 @@ const News = () => {
                         <p className="text-[#525C60] font-normal lg:text-base text-sm md:leading-3 leading-5">
                           {item.about}
                         </p>
+                        <div className="flex flex-row justify-between w-full">
+                          <button className="border-[3px] border-[#274C5B] text-[#274C5B] px-4 rounded-[10px] py-1 font-semibold text-xl hover:border-white hover:bg-[#274C5B] hover:text-white transition-all duration-300 cursor-pointer">
+                            Edit
+                          </button>
+                          <button
+                            // disabled={isDisabled}
+                            // onClick={() => {
+                            //   deleteProductPost(item._id);
+                            // }}
+                            className="border-[3px] border-[#274C5B] text-[#274C5B] px-4 rounded-[10px] py-1 font-semibold text-xl hover:border-white hover:bg-[#274C5B] hover:text-white transition-all duration-300 cursor-pointer"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                       {/* <div>
                     <button

@@ -5,9 +5,16 @@ const app = express();
 const http = require("http");
 const cors = require("cors");
 const UserSchema = require("./models/User");
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 const port = 8000;
 require("dotenv").config();
 const MONGO_URL = process.env.MONGO_URL;
+
+const store = new MongoDBStore({
+  uri: MONGO_URL,
+  collection: "sessions",
+});
 
 const addProductRoute = require("./routes/addProduct");
 const addNewsRoute = require("./routes/addNews");
